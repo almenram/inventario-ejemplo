@@ -6,10 +6,15 @@ print("""
  CALDERAS LEÓN
 =========================
 """)
-log= int(input ('que desea hacer? registrarse (1) o iniciar sesion (2)'))
-if log == 1:
-    correo = input('escriba su nuevo correo empresarial: ')
-    contrase;a= input('escriba su contrase;a: ')
-else:
-    correo = input('escriba su correo empresarial: ')
-    contrase;a= input('escriba su contrase;a: ')
+
+correo_guardado = ""
+contrasena_guardada = ""
+
+
+
+import json
+
+with open("usuarios.json") as archivo:
+    datos = json.load(archivo)
+
+print(datos)
