@@ -18,7 +18,7 @@ def mostrar_menu():
     "registrarse (2)\n"))
     return opcion
 
-def agrefar_material():
+def agregar_material():
     material=input("ingrese el nombre del nuevo material")
     codigo=input("ingrese el codigo del nuevo material")
     nuevo_material={"material": material, "codigo": codigo, "existencias": 0}
@@ -26,6 +26,18 @@ def agrefar_material():
     with open("materiales.json", "w") as archivo:
         json.dump(materiales, archivo, indent=4)
     print(f"se agrego correctamente: {nuevo_material}")
+
+def eliminar_materiales():
+    codigo=input("ingrese el codigo del nuevo material")
+    for i in range(len(materiales)):
+        if codigo== materiales[i]["codigo"]:
+            materiales.pop(i)
+            break
+    else:
+        print("material no encontrado.-")
+    with open("materiales.json", "w") as archivo:
+        json.dump(materiales, archivo, indent=4)
+    
 
 def mostrar_materiales():
     if len(materiales) == 0:
@@ -79,16 +91,29 @@ while True:
         print("opcion invalida")
     print('log fine')
 
-opcion_inv=int(input(f"BIENVENIDO AL INVENTARIO VIRTUAL {correo_guardado}"
-                 "\n¿que desea hacer?" \
-                    "\nagregar/eliminar material (1)" \
-                    "mostrar materiales (2)" \
-                    "agregar/eliminar existencias (3)\n"))
-if opcion_inv==1:
-    agrefar_material()
-elif opcion_inv==2:
-    mostrar_materiales()
-elif opcion_inv==3:
-   cambiar_existencias()
-else:
-    print('opcion invalida')
+while True:
+    opcion_inv=int(input(f"BIENVENIDO AL INVENTARIO VIRTUAL {correo_guardado}"))
+    print("¿que desea hacer?"
+    "\nagregar/eliminar material (1)" \
+    "mostrar materiales (2)" \
+    "agregar/eliminar existencias (3)\n "
+    "salir (4)")
+    
+    if opcion_inv==1:
+        agregar_eliminar=int(input('desea agregar (1) o eliminar un material (2)?  '))
+        if agregar_eliminar == 1:
+            agregar_material()
+        elif agregar_eliminar ==2:
+            eliminar_materiales()
+        else:
+            print("opcion invalida")
+
+    elif opcion_inv==2:
+        mostrar_materiales()
+    elif opcion_inv==3:
+        cambiar_existencias()
+    elif opcion_inv==4:
+        print('vuelva pronto')
+        break
+    else:
+        print('opcion invalida')
