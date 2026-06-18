@@ -1,0 +1,22 @@
+[
+    {
+        "material": "tornillo",
+        "codigo": "tor001",
+        "existencias": 0
+    },
+    {
+        "material": "tornillo",
+        "codigo": "2",
+        "existencias": 0
+    },
+    {
+        "material": "papa",
+        "codigo": "pa01",
+        "existencias": 0
+    },
+    {
+        "material": "tor44",
+        "codigo": "topr02",
+        "existencias": 0
+    }
+]
